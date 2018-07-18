@@ -1,0 +1,8 @@
+def expenses(request):
+	purchase =(expenses_details.objects.all().values())
+	list_result = [entry for entry in purchase]
+	def convert(data):
+	    if isinstance(data, datetime.date):
+			return str(data)
+	response = json.dumps(list_result, default=convert)
+	return  JsonResponse(response, safe=False)
