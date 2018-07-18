@@ -1,0 +1,47 @@
+<html>
+    {% csrf_token %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="https://cdn.datatables.net/v/dt/dt-1.10.12/se-1.2.0/datatables.min.js"></script>
+   <script src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.7/js/dataTables.checkboxes.min.js"></script>
+   <script type="text/javascript">
+        $(document).ready(function() {
+        var table = $('#expenses_list_table').DataTable({
+        "ajax": {
+            'url' :"/expenses/",
+            "type": "GET",
+            "dataSrc": "",
+            "cache" : true
+        },      
+        "columns": [
+            { "data": "parchased_date" },
+            { "data": "parchased_price" },
+            { "data": "parchased_product" }
+           
+        ],
+        "order": [[1, 'asc']]
+    } );
+} );
+</script>
+<div class="card-body">
+    <table id="expenses_list_table" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Purchased Date</th>
+                <th>Purchased Product</th>
+                <th>Price</th>
+    
+            </tr>
+        </thead>
+        <!-- <tfoot>
+            <tr>
+                <th></th>
+                <th>Purchased Date</th>
+                <th>Purchased Product</th>
+                <th>Price</th>
+            </tr>
+        </tfoot> -->
+    </table>
+</div>
+</html>
