@@ -21,7 +21,7 @@ class source(models.Model):
 
 class expenses_details(models.Model):
     parchased_product = models.CharField(max_length=255)
-    parchased_price = models.CharField(max_length=255)
+    parchased_price = models.IntegerField()
     parchased_date = models.DateTimeField('date')
 
     def __str__(self):

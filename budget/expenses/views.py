@@ -8,6 +8,7 @@ from expenses.models import purchasing_items, expenses_details
 from django.core import serializers
 from django.views.generic.base import TemplateView 
 from django.http import JsonResponse
+from django.shortcuts import redirect
 from django.core.serializers.json import DjangoJSONEncoder
 from rest_framework.decorators import api_view
 from rest_framework.decorators import list_route, detail_route
@@ -32,7 +33,8 @@ def abcd(request):
 		parchesed_data = expenses_details( parchased_product= parchesed_details['purchase_items'] ,
 			parchased_price= parchesed_details['price'], parchased_date= parchesed_details['date'] )
 		parchesed_data.save()
-		return HttpResponse("Sucessfully Added the purchased details")
+		# return HttpResponse("Sucessfully Added the purchased details")
+		return redirect('http://127.0.0.1:8000/expenses/')
 	except Exception:
 		return HttpResponse("Error in Adding the purchased details")
 
@@ -44,6 +46,9 @@ def expenses(request):
 
 class dashboard(TemplateView):
 	template_name = "dashboard.html"
+
+
+
 
 
 
